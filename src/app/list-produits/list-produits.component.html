@@ -1,0 +1,25 @@
+<section>
+
+<h1 class="list-produit-title text-center">List of our phones</h1>
+<div class="container-row list-produit">
+<div class="container-col presentation"
+*ngFor="let item of produits">
+<div class="col-md-7 marge container-col">
+  <div>
+    <img class="zoom" alt="picture phone" style="width: 250px; height: 250px;" src="../assets/{{item.picture}}" data-holder-rendered="true">
+  </div>
+  <h2 class="name-produit featurette-heading text-center"> <span class="text-muted">{{item.name}} </span></h2>
+  
+  <h6 class="lead">Color : {{item.color}}</h6>
+  <h6 class="lead">Price : {{item.price}} €</h6>
+  <h6 class="lead nbr-stock">{{item.nbPieces}} in stock</h6>
+</div>
+{{nbrCommande}}
+<div class="add-panier">
+  <button type="button" class="btn btn-primary" (click)="addProduitToCart(item)">Add to cart </button>
+</div>
+
+</div>
+</div>
+
+</section>

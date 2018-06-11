@@ -20,13 +20,22 @@ export class ListProduitsComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.dataService.getAll().subscribe(value => this.produits = value);  
-    this.panier = this.panierService.allProduits();  
+    this.dataService.getAll().subscribe(value => {
+      this.produits = value  
+      // console.log(this.produits);
+    });
+    // this.panier = this.panierService.getCart();  
   }
 
   addProduitToCart(produit){
-    this.panierService.addProduit(this.produits[this.produits.indexOf(produit)]);
+    if (!produit.added) {
+    this.panierService.addProduitToCart(this.produits[this.produits.indexOf(produit)]);
+    this.dataService.setProduits(this.produits.indexOf(produit));
+    this.produits = this.dataService.prduits;
     // this.change.emit(this.nbrCommande);
+    }else {
+      alert("you have already added this product");
+    }
   }
 }
 

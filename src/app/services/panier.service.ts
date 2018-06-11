@@ -14,19 +14,20 @@ export class PanierService {
       this.panier = this.read('panier');
     }
     
-    allProduits():Produit[] {
+    getCart():Produit[] {
       return this.panier;
     }
   
-    addProduit(produit:Produit):Produit[] {
+    addProduitToCart(produit:Produit):Produit[] {
       this.panier.push(produit);
       this.save();
       return this.panier;
     }
 
-    deleteProduit(id:number):void {
+    deleteItem(id:number):Produit[] {
       this.panier.splice(id, 1);
       this.save();
+      return this.panier;
     }
 
     clearCart():Produit[] {

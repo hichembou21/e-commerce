@@ -17,5 +17,10 @@ export class DataService {
 
   getAll() {
     return this.httpClient.get<Produit[]>("http://localhost:3000/produits/")
+    .pipe(map(res => this.prduits = res));
+  }
+
+  setProduits(id) {
+    this.prduits[id].added = !this.prduits[id].added;
   }
 }

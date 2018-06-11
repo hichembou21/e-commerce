@@ -14,6 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { IndexComponent } from './index/index.component';
 import { PanierComponent } from './panier/panier.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DetailProduitComponent } from './detail-produit/detail-produit.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     IndexComponent,
     PanierComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DetailProduitComponent
   ],
   imports: [
     BrowserModule,

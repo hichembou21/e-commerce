@@ -1,0 +1,13 @@
+<div class="col-md-7 marge container-col">
+  <div>
+    <img class="zoom" alt="picture phone" style="width: 250px; height: 250px;" src="../assets/{{produit.picture}}" data-holder-rendered="true">
+  </div>
+  <h2 class="name-produit featurette-heading text-center"> <span class="text-muted">{{produit.name}} </span></h2>
+  
+  <h6 class="lead">Color : {{produit.color}}</h6>
+  <h6 class="lead">Price : {{produit.price}} €</h6>
+  <h6 class="lead nbr-stock">{{produit.nbPieces}} in stock</h6>
+  <div *ngIf="!produit.added" class="add-panier">
+    <button type="button" class="btn btn-primary" (click)="addProduitToCart(produit)">Add to cart </button>
+  </div>
+</div>

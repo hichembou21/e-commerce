@@ -16,7 +16,12 @@ export class PanierComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.panier = this.panierService.allProduits();      
+    this.panier = this.panierService.getCart();      
+  }
+
+  deleteProduct(id) {
+    this.panier = this.panierService.deleteItem(id);
+    this.panier[id].added = false;
   }
 
 }

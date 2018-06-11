@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Produit } from './entities/produit';
 import { PanierService } from './services/panier.service';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,11 @@ import { PanierService } from './services/panier.service';
 
 export class AppComponent {
   title = 'app';
+
+  produits:Produit[];
   panier:Produit[];
 
-  constructor(private panierService: PanierService) {
+  constructor(private panierService: PanierService, private dataService: DataService) {
 
   }
   

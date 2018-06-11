@@ -6,4 +6,5 @@ export interface Produit {
     color:string;
     nbPieces:number;
     picture:string;
+    added : boolean;
 }

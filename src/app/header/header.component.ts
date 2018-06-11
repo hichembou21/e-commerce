@@ -11,15 +11,13 @@ export class HeaderComponent implements OnInit {
 
   
   panier:Produit[] = [];
-  nbrCommande:number = this.panier.length;
   
   constructor(private panierService:PanierService) {
 
    }
  
   ngOnInit() {
-   this.panier = this.panierService.allProduits();
-   this.nbrCommande = 0;
+   this.panier = this.panierService.getCart();
   }
 
   clrearCart(){

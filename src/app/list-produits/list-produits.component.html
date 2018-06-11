@@ -3,7 +3,7 @@
 <h1 class="list-produit-title text-center">List of our phones</h1>
 <div class="container-row list-produit">
 <div class="container-col presentation"
-*ngFor="let item of produits">
+*ngFor="let item of produits; index as i">
 <div class="col-md-7 marge container-col">
   <div>
     <img class="zoom" alt="picture phone" style="width: 250px; height: 250px;" src="../assets/{{item.picture}}" data-holder-rendered="true">
@@ -14,8 +14,11 @@
   <h6 class="lead">Price : {{item.price}} €</h6>
   <h6 class="lead nbr-stock">{{item.nbPieces}} in stock</h6>
 </div>
-{{nbrCommande}}
-<div class="add-panier">
+<div>
+    <a class="badge badge-primary" [routerLink]="['/detail-produit', i]">Description</a>
+</div>
+
+<div *ngIf="!item.added" class="add-panier">
   <button type="button" class="btn btn-primary" (click)="addProduitToCart(item)">Add to cart </button>
 </div>
 

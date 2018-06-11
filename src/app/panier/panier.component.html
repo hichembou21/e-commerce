@@ -1,17 +1,24 @@
 <section>
   
-  <h1 class="list-produit-title text-center">My cart</h1>
+  <h1 class="list-produit-title text-center">
+    <span *ngIf="panier.length > 0">My cart</span>
+    <span *ngIf ="panier.length === 0">Your cart is empty</span>
+    
+  </h1>
   <div class="container-row list-produit">
   <div class="container-col presentation"
-  *ngFor="let item of panier">
+  *ngFor="let item of panier; index as i">
   <div class="col-md-7 marge container-col">
     <div>
       <img class="zoom" alt="picture phone" style="width: 250px; height: 250px;" src="../assets/{{item.picture}}" data-holder-rendered="true">
     </div>
     <h2 class="name-produit featurette-heading text-center"> <span class="text-muted">{{item.name}} </span></h2>
-    
+    <span>{{i}}</span>
     <h6 class="lead">Color : {{item.color}}</h6>
     <h6 class="lead">Price : {{item.price}} €</h6>
+    <div class="add-panier">
+      <button type="button" class="btn btn-danger" (click)="deleteProduct(i)">delete to cart </button>
+    </div>
   </div>
   
   </div>

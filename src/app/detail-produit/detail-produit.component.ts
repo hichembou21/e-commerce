@@ -18,14 +18,19 @@ export class DetailProduitComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-    this.produit = this.dataService.prduits[+params['id']]; // (+) converts string 'id' to a number
-    console.log(this.produit);
+    this.produit = this.dataService.produits[+params['id']]; // (+) converts string 'id' to a number
+    // console.log(this.produit);
     });
   }
 
   addProduitToCart(produit){
-    this.panierService.addProduitToCart(this.produit);
-    this.produit.added = true;
+    if (!produit.added) {
+      this.produit.added = true;
+      this.panierService.addProduitToCart(this.produit);
+    } else {
+      
+    }
+    
     // this.change.emit(this.nbrCommande);
   }
 

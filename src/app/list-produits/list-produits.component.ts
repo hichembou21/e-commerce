@@ -12,7 +12,7 @@ import { DataService } from 'src/app/services/data.service';
 export class ListProduitsComponent implements OnInit {
 
   produits:Produit[];
-  panier:Produit[];
+  // panier:Produit[];
 
 
   constructor(private panierService: PanierService, private dataService: DataService) {
@@ -24,15 +24,13 @@ export class ListProduitsComponent implements OnInit {
       this.produits = value  
       // console.log(this.produits);
     });
-    // this.panier = this.panierService.getCart();  
+    console.log("ok listProduits");  
   }
 
   addProduitToCart(produit){
     if (!produit.added) {
-    this.panierService.addProduitToCart(this.produits[this.produits.indexOf(produit)]);
-    this.dataService.setProduits(this.produits.indexOf(produit));
-    this.produits = this.dataService.prduits;
-    // this.change.emit(this.nbrCommande);
+      this.panierService.addProduitToCart(produit);
+      this.produits = this.dataService.setProduit(this.produits.indexOf(produit));
     }else {
       alert("you have already added this product");
     }

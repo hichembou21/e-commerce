@@ -21,7 +21,6 @@ export class PanierComponent implements OnInit {
 
   deleteProduct(id) {
     this.panier = this.panierService.deleteItem(id);
-    this.panier[id].added = false;
   }
 
 }

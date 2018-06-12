@@ -11,16 +11,38 @@ import { Produit } from 'src/app/entities/produit';
 })
 export class DataService {
 
-  prduits: Produit[];
+  produits: Produit[];
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient) { 
+    if (this.read('produits') === null) {
+      this.produits = [];
+      this.save();
+    }
+    this.produits = this.read('produits');
+  }
 
   getAll() {
     return this.httpClient.get<Produit[]>("http://localhost:3000/produits/")
-    .pipe(map(res => this.prduits = res));
+    .pipe(tap(res => {
+      this.produits = res;
+      this.save();
+    }
+    )).pipe(map( res => this.produits = res));
   }
 
-  setProduits(id) {
-    this.prduits[id].added = !this.prduits[id].added;
+  setProduit(id) {
+    this.produits[id].added = !this.produits[id].added;
+    this.save();
+    return this.produits;
+  }
+
+  private save():void {
+    let json:string = JSON.stringify(this.produits);;
+    localStorage.setItem('produits', json);
+  }
+
+  private read(itemName:string) {
+    let json = localStorage.getItem(itemName);
+    return JSON.parse(json);
   }
 }
